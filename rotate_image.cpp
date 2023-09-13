@@ -24,16 +24,6 @@ source from: leetcode 48
 #include "algobase.h"
 using namespace std;
 
-#define PRINT_VECTOR_2D(x)                                                     \
-  for (auto &v : x) {                                                          \
-    cout << "[";                                                               \
-    for (auto &w : v) {                                                        \
-      cout << w << ",";                                                        \
-    }                                                                          \
-    cout << "]"                                                                \
-         << "\n";                                                              \
-  }
-
 void rotate(vector<vector<int>> &matrix) {
   int n = matrix.size();
   int m = matrix[0].size();
