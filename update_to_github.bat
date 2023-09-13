@@ -1,7 +1,7 @@
 @echo off
-
+set BATCH_FILE_LOCATION=%~dp0
 REM Change to your project directory (Optional)
-cd "D:\william\codes\algorithm"
+cd %BATCH_FILE_LOCATION%
 
 REM Stage changes
 git add .
