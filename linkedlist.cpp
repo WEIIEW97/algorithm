@@ -26,6 +26,26 @@ void push(ListNode** head_ref, int new_key) {
     *head_ref = new_node;
 }
 
+void pb(ListNode*& head, int value) {
+    // Step 1: Create the new node
+    ListNode* new_node = new ListNode();
+    new_node->val = value;
+    new_node->next = nullptr;
+
+    if (!head) {
+        head = new_node;
+        return;
+    }
+
+    ListNode* temp = head;
+    while (temp->next) {
+        temp = temp->next;
+    }
+
+    temp->next = new_node;
+}
+
+
 int main() {
     ListNode* head = nullptr;
     push(&head, 10);
