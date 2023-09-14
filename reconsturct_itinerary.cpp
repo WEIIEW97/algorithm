@@ -36,22 +36,97 @@ source: leetcode 332
  */
 
 #include "algobase.h"
+#include "tictoc.h"
 using namespace std;
 
-vector<string> findItinerary(vector<vector<string>>& tickets) {
-    vector<string> itinerary;
-    for (int i=0; i<tickets.size(); i++) {
-        for (int j=0; j<tickets.size() && j!=i; j++) {
-            if (tickets[i][1] == tickets[j][0] && i > j) {
-                swap(tickets[i], tickets[j]);
-            }
+// using DFS + priority_queue
+class Solution1 {
+  public:
+    void build_graph(vector<vector<string>>& tickets) {
+        for(auto& edge : tickets) {
+            string from=edge[0], to=edge[1];
+            fly[from].push(to);
         }
     }
 
-    PRINT_VECTOR_2D(tickets);
-    
-    return itinerary;
-}
+    void dfs(string from) {
+        while(!fly[from].empty()) {
+            string to = fly[from].top();
+            fly[from].pop();
+            dfs(to);
+        }
+        ans.push_back(from);
+    }
+
+    vector<string> findItinerary(vector<vector<string>>& tickest) {
+        build_graph(tickest);
+        dfs("JFK");
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+
+  public:
+    vector<string> ans;
+    unordered_map<string, priority_queue<string, vector<string>, greater<string>>> fly;
+
+};
+
+// use DFS + deque
+class Solution2 {
+  public:
+    void build_graph(vector<vector<string>>& tickets) {
+        for(auto& edge : tickets) {
+            string from=edge[0], to=edge[1];
+            fly[from].push(to);
+        }
+    }
+
+    void dfs(string from) {
+        while(!fly[from].empty()) {
+            string to = fly[from].top();
+            fly[from].pop();
+            dfs(to);
+        }
+        ans.push_front(from);
+    }
+
+    vector<string> findItinerary(vector<vector<string>>& tickest) {
+        build_graph(tickest);
+        dfs("JFK");
+        return vector<string>(ans.begin(), ans.end());
+    }
+
+  public:
+    deque<string> ans;
+    unordered_map<string, priority_queue<string, vector<string>, greater<string>>> fly;
+    // unordered_map<string, int> indeg, outdeg;
+};
+
+// DFS extremely fast version
+class Solution3 {
+  public:
+    void dfs(string s) {
+        auto &x=map[s];
+        while(!x.empty())
+        {
+            string to=x.top();
+            x.pop();
+            dfs(to);
+        }
+        ans.push_back(s);
+    }
+
+    vector<string> findItinerary(vector<vector<string>>& tickets) {
+        for(auto &x:tickets)
+            map[x[0]].push(x[1]);
+        dfs("JFK");
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+  public:
+    unordered_map<string,priority_queue<string,vector<string>,greater<string>>> map; 
+    vector<string> ans;
+};
 
 int main() {
     // vector<vector<string>> tickets = {
@@ -67,7 +142,22 @@ int main() {
         {"ATL","JFK"},
         {"ATL","SFO"},
     };
-    auto res = findItinerary(tickets);
+    auto solver1 = Solution1();
+    TIC(res1)
+    auto res1 = solver1.findItinerary(tickets);
+    TOC(res1)
+    PRINT_VECTOR_1D(res1);
 
+    auto solver2 = Solution2();
+    TIC(res2)
+    auto res2 = solver2.findItinerary(tickets);
+    TOC(res2)
+    PRINT_VECTOR_1D(res2);
+
+    auto solver3 = Solution3();
+    TIC(res3)
+    auto res3 = solver3.findItinerary(tickets);
+    TOC(res3)
+    PRINT_VECTOR_1D(res3);
     return 0;
 }
