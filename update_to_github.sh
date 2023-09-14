@@ -1,5 +1,7 @@
-curdir=${pwd}
-cd $curdir
+#!/bin/zsh
+script_dir=$(dirname "$(readlink -f "$BASH_SOURCE")")
+echo "The script is located in $script_dir"
+cd $script_dir
 
 git add .
 git status
@@ -10,7 +12,5 @@ if [ -z "$1" ]; then
 fi
 
 git commit -m $1
-
 git push
-
 echo "pushing to remote repository done!"
