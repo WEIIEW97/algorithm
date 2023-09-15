@@ -29,43 +29,6 @@ All pairs (xi, yi) are distinct.
 #include "algobase.h"
 using namespace std;
 
-// class Solution1 {
-// public:
-//   int minCostConnectPoints(vector<vector<int>> &points) {
-//     auto visited = build_graph(points);
-//     dfs(0, visited);
-//     return ans;
-//   }
-
-//   int L1(vector<int> &p1, vector<int> &p2) {
-//     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]);
-//   }
-
-//   vector<bool> build_graph(vector<vector<int>> &points) {
-//     for (int i = 0; i < points.size(); i++) {
-//       graph[i] = points[i];
-//     }
-
-//     auto n = points.size();
-//     vector<bool> visited(n, false);
-//     return visited;
-//   }
-
-//   void dfs(int node, vector<bool> &visited) {
-//     visited[node] = true;
-//     for (int i = node + 1; i < graph.bucket_count(); i++) {
-//       if (!visited[i]) {
-//         dfs(i, visited);
-//       }
-//     }
-//     ans += L1(graph[node], graph[node + 1]);
-//   }
-
-// public:
-//   unordered_map<int, vector<int>> graph;
-//   int ans = 0;
-// };
-
 class Solution {
 public:
   int minCostConnectPoints(vector<vector<int>> &points) {

@@ -38,38 +38,62 @@ source from: leetcode 66
 #include "algobase.h"
 using namespace std;
 
-vector<int> plusOne(vector<int> &digits) {
-  int n = digits.size();
-  if (digits.back() < 9) {
-    digits.back()++;
-    return digits;
-  } else {
-    reverse(digits.begin(), digits.end());
-    for (int i = 0; i < n; i++) {
-      if (digits[i] == 9) {
-        digits[i] = 0;
-        if (digits[i + 1] < 9 && i < n - 2) {
-          digits[i + 1]++;
-        }
-        if (digits[i + 1] == 9 && i < n - 2) {
-          digits[i + 1] = 0;
-        }
-        if (digits[i + 1] == 9 && i == n - 2) {
-          digits.push_back(1);
+// extremely slow and memory cost version
+class Solution1 {
+public:
+  vector<int> plusOne(vector<int> &digits) {
+    int n = digits.size();
+    if (digits.back() < 9) {
+      digits.back()++;
+      return digits;
+    } else {
+      for (auto iter = digits.rbegin(); iter != digits.rend(); ++iter) {
+        check9(iter);
+        if (*iter != 0) {
+          break;
         }
       }
+      if (digits.front() == 0) {
+        digits.insert(digits.begin(), 1);
+      }
+      return digits;
     }
-    reverse(digits.begin(), digits.end());
+  }
+
+  void check9(vector<int>::reverse_iterator &iter) {
+    if (*iter >= 9) {
+      *iter = 0;
+    } else {
+      ++(*iter);
+    }
+  }
+};
+
+class Solution2 {
+public:
+  vector<int> plusOne(vector<int> &digits) {
+    for (int i = digits.size() - 1; i >= 0; i--) {
+      if (digits[i] < 9) {
+        digits[i]++;
+        break;
+      }
+      digits[i] = 0;
+    }
+
+    if (digits[0] == 0) {
+      digits.insert(digits.begin(), 1);
+    }
     return digits;
   }
-}
+};
 
 int main() {
   vector<int> digits1 = {4, 3, 2, 1};
-  vector<int> digits2 = {1, 9, 9};
+  vector<int> digits2 = {1,9, 9};
   vector<int> digits3 = {1, 2, 3};
 
-  auto res = plusOne(digits2);
+  auto solver = Solution2();
+  auto res = solver.plusOne(digits2);
   PRINT_VECTOR_1D(res);
   return 0;
 }
