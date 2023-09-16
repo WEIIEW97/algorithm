@@ -89,7 +89,7 @@ public:
 
 int main() {
   vector<int> digits1 = {4, 3, 2, 1};
-  vector<int> digits2 = {1,9, 9};
+  vector<int> digits2 = {1, 9, 9};
   vector<int> digits3 = {1, 2, 3};
 
   auto solver = Solution2();
