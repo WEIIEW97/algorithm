@@ -6,4 +6,4 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-path_with_minimum_effort.cpp)
+the_k_weakest_rows_in_a_matrix.cpp)

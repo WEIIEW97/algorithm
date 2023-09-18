@@ -24,6 +24,8 @@ Constraints:
 1 <= points.length <= 1000
 -106 <= xi, yi <= 106
 All pairs (xi, yi) are distinct.
+
+source from: leetcode 1584
 */
 
 #include "algobase.h"
