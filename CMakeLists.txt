@@ -6,4 +6,4 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-median_of_two_sorted_arrays.cpp)
+length_of_last_word.cpp)
