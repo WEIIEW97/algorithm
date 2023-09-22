@@ -40,7 +40,7 @@ int climbStairsV1(int m) {
 
 // this is a more solid way, in combinations
 int BC(int n, int r) {
-  int coeff = 1;
+  long long coeff = 1;
   if (r > n - r)
     r = n - r; // Because C(n, r) == C(n, n-r)
 
@@ -49,7 +49,7 @@ int BC(int n, int r) {
     coeff /= (i + 1);
   }
 
-  return coeff;
+  return static_cast<int>(coeff);
 }
 
 int climbStairsV2(int m) {
@@ -75,7 +75,7 @@ int climbStarisV3(int m) {
 int main() {
   int n1 = 2;
   int n2 = 3;
-  auto ans = climbStarisV3(31);
+  auto ans = climbStarisV3(44);
   cout << ans << endl;
   return 0;
 }
