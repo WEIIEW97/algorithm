@@ -30,14 +30,21 @@ source from: leetcode 392
 using namespace std;
 
 bool isSubsequence(string s, string t) {
-  sort(s.begin(), s.end());
-  sort(t.begin(), t.end());
-  return t.find((s));
+  int n1 = s.size(), n2 = t.size();
+  int seen = 0;
+  for (int i = 0; i < n2; i++) {
+    if (t[i] == s[seen])
+      seen++;
+  }
+  return seen == n1;
 }
 
 int main() {
   string s1 = "abc", t1 = "ahbgdc";
-  auto ans = isSubsequence(s1, t1);
+  string s2 = "axc", t2 = "ahbgdc";
+  string s3 = "", t3 = "";
+  string s4 = "acb", t4 = "ahbgdc";
+  auto ans = isSubsequence(s4, t4);
 
   cout << ans << endl;
   return 0;
