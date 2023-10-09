@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
+#include <climits>
 #include <cstdio>
 #include <iomanip>
 #include <iostream>
@@ -9,7 +11,7 @@
 #include <numeric>
 #include <set>
 #include <stack>
-#include <string>
+#include <cstring>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
