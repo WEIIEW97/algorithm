@@ -17,7 +17,6 @@
 #include <unordered_set>
 #include <vector>
 
-
 // leetcode struct definition
 struct ListNode {
   int val;
@@ -41,3 +40,9 @@ struct ListNode {
   for (auto& v : x)                                                            \
   cout << "[" << v << ",]"                                                     \
        << "\n"
+
+template <class T>
+bool is_unique(std::vector<T>& x) {
+  sort(x.begin(), x.end()); // O(N log N)
+  return adjacent_find(x.begin(), x.end()) == x.end();
+}

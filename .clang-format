@@ -5,3 +5,4 @@ PointerAlignment: Left
 ReferenceAlignment: Left
 AlignConsecutiveMacros: true
 SortIncludes: false
+AlwaysBreakTemplateDeclarations: true
