@@ -14,5 +14,5 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 add_executable(${PROJECT_NAME}
-minimum_operations.cpp)
+min_cost_climb_stairs.cpp)
 
