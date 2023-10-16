@@ -46,3 +46,16 @@ bool is_unique(std::vector<T>& x) {
   sort(x.begin(), x.end()); // O(N log N)
   return adjacent_find(x.begin(), x.end()) == x.end();
 }
+
+inline int NCR(int n, int r) {
+  if (r == 0)
+    return 1;
+  else {
+    long long m = 1;
+    for (int i = 1; i <= r; i++) {
+      m *= (n - i + 1);
+      m /= i;
+    }
+    return m;
+  }
+}
