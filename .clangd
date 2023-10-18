@@ -1,6 +1,0 @@
-If:
-  PathMatch: .*
-  CompileFlags:
-    Add: 
-      - -I/usr/include
-      - -I/usr/local/include

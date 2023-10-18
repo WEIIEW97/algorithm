@@ -16,6 +16,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <functional>
 
 // leetcode struct definition
 struct ListNode {
@@ -48,7 +49,7 @@ bool is_unique(std::vector<T>& x) {
 }
 
 inline int NCR(int n, int r) {
-  if (r == 0)
+  if (r == 0 || r == n)
     return 1;
   else {
     long long m = 1;
