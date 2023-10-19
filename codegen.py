@@ -6,17 +6,17 @@ CURWCPATH = os.path.dirname(__file__)
 
 def generate_cpp_template(filename):
     template_code = """\
-    /**
-    The problem description goes here.
-    */
-    
-    #include "algobase.h"
-    using namespace std;
+/**
+The problem description goes here.
+*/
 
-    int main() {
-        // Your code here
-        return 0;
-    }
+#include "algobase.h"
+using namespace std;
+
+int main() {
+    // Your code here
+    return 0;
+}
     """
     with open(os.path.join(CURWCPATH, filename), "w") as f:
         f.write(template_code)
