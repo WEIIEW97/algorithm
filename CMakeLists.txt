@@ -14,5 +14,5 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 add_executable(${PROJECT_NAME}
-is_power_of_four.cpp)
+kth_symbol_in_grammar.cpp)
 
