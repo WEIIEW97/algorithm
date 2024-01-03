@@ -14,5 +14,5 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 add_executable(${PROJECT_NAME}
-calculator.cpp)
+number_of_lasers.cpp)
 

@@ -16,7 +16,33 @@
 #include <iostream>
 using namespace std;
 
+class Base {
+public:
+  int a_, b_;
+  Base(int a, int b) : a_(a), b_(b) {}
+  ~Base() = default;
+  int add() {
+    int res = a_ + b_;
+    return res;
+  }
+};
+
+class Inhert : public Base {
+public:
+  Inhert(int a, int b) : Base(a, b) {}
+  ~Inhert() = default;
+  int multipy() {
+    return a_ * b_;
+  }
+};
+
 int main() {
-    cout << "just for fun!" << endl;
+    auto calculator1 = Base(3, 5);
+    auto calculator2 = Inhert(4, 5);
+    auto add_number1 = calculator1.add();
+    auto add_number2 = calculator2.add();
+    auto time_number2 = calculator2.multipy();
+
+    cout << add_number1 << add_number2 << time_number2 << endl;
     return 0;
 }

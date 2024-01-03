@@ -42,6 +42,9 @@ struct ListNode {
   cout << "[" << v << ",]"                                                     \
        << "\n"
 
+#define ll long long
+#define ull unsigned long long
+
 template <class T>
 bool is_unique(std::vector<T>& x) {
   sort(x.begin(), x.end()); // O(N log N)
@@ -59,4 +62,18 @@ inline int NCR(int n, int r) {
     }
     return m;
   }
+}
+
+inline ull f(int n) {
+  ull res = 1;
+  if (n == 0) return res;
+  for (int i = 1; i<=n; ++i) {
+    res *= i;
+  }
+  return res;
+}
+
+inline ull NPR(int n, int r) {
+  if (r >= n) return f(r) / f(r-n);
+  return f(n) / f(n-r);
 }

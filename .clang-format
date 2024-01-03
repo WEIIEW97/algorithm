@@ -6,3 +6,4 @@ ReferenceAlignment: Left
 AlignConsecutiveMacros: true
 SortIncludes: false
 AlwaysBreakTemplateDeclarations: true
+UseTab: Never
