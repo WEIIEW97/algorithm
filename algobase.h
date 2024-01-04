@@ -29,20 +29,25 @@ struct ListNode {
 
 #define PRINT_VECTOR_2D(x)                                                     \
   for (auto& v : x) {                                                          \
-    cout << "[";                                                               \
+    std::cout << "[";                                                          \
     for (auto& w : v) {                                                        \
-      cout << w << ",";                                                        \
+      std::cout << w << ",";                                                   \
     }                                                                          \
-    cout << "]"                                                                \
-         << "\n";                                                              \
+    std::cout << "]"                                                           \
+              << "\n";                                                         \
   }
 
 #define PRINT_VECTOR_1D(x)                                                     \
   for (auto& v : x)                                                            \
-  cout << "[" << v << ",]"                                                     \
-       << "\n"
+    std::cout << "[" << v << ",]"                                              \
+              << "\n";
 
-#define ll long long
+#define PRINT_MAP(x)                                                           \
+  for (auto& kv : x) {                                                         \
+    std::cout << "key: " << kv.first << " value: " << kv.second << "\n";       \
+  }
+
+#define ll  long long
 #define ull unsigned long long
 
 template <class T>
@@ -66,14 +71,16 @@ inline int NCR(int n, int r) {
 
 inline ull f(int n) {
   ull res = 1;
-  if (n == 0) return res;
-  for (int i = 1; i<=n; ++i) {
+  if (n == 0)
+    return res;
+  for (int i = 1; i <= n; ++i) {
     res *= i;
   }
   return res;
 }
 
 inline ull NPR(int n, int r) {
-  if (r >= n) return f(r) / f(r-n);
-  return f(n) / f(n-r);
+  if (r >= n)
+    return f(r) / f(r - n);
+  return f(n) / f(n - r);
 }
