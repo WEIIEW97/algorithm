@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/leaf_similar_trees.cpp)
+leetcode/max_ancestor_diff.cpp)
