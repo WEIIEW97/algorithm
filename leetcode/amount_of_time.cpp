@@ -84,5 +84,8 @@ int main() {
   TreeNode* node2 = build_tree(root2);
   cout << amountOfTime(node1, 3) << endl;
   cout << amountOfTime(node2, 1) << endl;
+
+  delete_tree(node1);
+  delete_tree(node2);
   return 0;
 }

@@ -54,5 +54,8 @@ int main() {
   TreeNode* root2 = build_tree(vec2);
   cout << maxAncestorDiff(root1) << endl;
   cout << maxAncestorDiff(root2) << endl;
+
+  delete_tree(root1);
+  delete_tree(root2);
   return 0;
 }
