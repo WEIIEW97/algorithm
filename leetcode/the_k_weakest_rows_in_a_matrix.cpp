@@ -59,7 +59,7 @@ source from: leetcode 1337
 #include "algobase.h"
 using namespace std;
 
-vector<int> kWeakestRowsV1(vector<vector<int>> &mat, int k) {
+vector<int> kWeakestRowsV1(vector<vector<int>>& mat, int k) {
   int h = mat.size();
 
   vector<pair<int, int>> rec;
@@ -68,7 +68,7 @@ vector<int> kWeakestRowsV1(vector<vector<int>> &mat, int k) {
         make_pair(i, std::accumulate(mat[i].begin(), mat[i].end(), 0)));
   }
 
-  sort(rec.begin(), rec.end(), [](pair<int, int> &p1, pair<int, int> &p2) {
+  sort(rec.begin(), rec.end(), [](pair<int, int>& p1, pair<int, int>& p2) {
     if (p1.second < p2.second)
       return true;
     if (p1.second == p2.second)
@@ -85,7 +85,7 @@ vector<int> kWeakestRowsV1(vector<vector<int>> &mat, int k) {
 }
 
 // by using std::lower_bound
-vector<int> kWeakestRowsV2(vector<vector<int>> &mat, int k) {
+vector<int> kWeakestRowsV2(vector<vector<int>>& mat, int k) {
   int n = mat.size();
 
   vector<int> res;
@@ -104,7 +104,6 @@ vector<int> kWeakestRowsV2(vector<vector<int>> &mat, int k) {
   }
   return res;
 }
-
 
 int main() {
   vector<vector<int>> mat1 = {{1, 1, 0, 0, 0},

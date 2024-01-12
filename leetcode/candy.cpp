@@ -37,7 +37,7 @@ source from leetcode: 135 candy
 using namespace std;
 
 // very ituitive but dumb way, super slow and memeroy costy
-int candy(vector<int> &ratings) {
+int candy(vector<int>& ratings) {
   auto n = ratings.size();
   vector<int> candies(n, 1);
 

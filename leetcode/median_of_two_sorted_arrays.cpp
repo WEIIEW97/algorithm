@@ -28,7 +28,7 @@ source from: leetcode 4
 using namespace std;
 
 // slow but intuitive way
-double findMedianSortedArraysV1(vector<int> &nums1, vector<int> &nums2) {
+double findMedianSortedArraysV1(vector<int>& nums1, vector<int>& nums2) {
   vector<int> merged;
   merged.reserve(nums1.size() + nums2.size());
   merge(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(),
@@ -43,7 +43,7 @@ double findMedianSortedArraysV1(vector<int> &nums1, vector<int> &nums2) {
 }
 
 // using binary search
-double findMedianSortedArraysV2(vector<int> &nums1, vector<int> &nums2) {
+double findMedianSortedArraysV2(vector<int>& nums1, vector<int>& nums2) {
 
   // ** Intuition  **
   // I have to find out correct left half and correct right half

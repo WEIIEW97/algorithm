@@ -27,16 +27,16 @@ source from leetcode: 2. Add Two Numbers
 #include "algobase.h"
 using namespace std;
 
-void push(ListNode **head_ref, int new_key) {
-  ListNode *new_node = new ListNode();
+void push(ListNode** head_ref, int new_key) {
+  ListNode* new_node = new ListNode();
   new_node->val = new_key;
   new_node->next = *head_ref;
   *head_ref = new_node;
 }
 
-void pb(ListNode *&head, int value) {
+void pb(ListNode*& head, int value) {
   // Step 1: Create the new node
-  ListNode *new_node = new ListNode();
+  ListNode* new_node = new ListNode();
   new_node->val = value;
   new_node->next = nullptr;
 
@@ -45,7 +45,7 @@ void pb(ListNode *&head, int value) {
     return;
   }
 
-  ListNode *temp = head;
+  ListNode* temp = head;
   while (temp->next) {
     temp = temp->next;
   }
@@ -53,7 +53,7 @@ void pb(ListNode *&head, int value) {
   temp->next = new_node;
 }
 
-ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
   int i1 = 0, i2 = 0, s;
   int iter = 0;
   while (l1 != nullptr) {
@@ -67,7 +67,7 @@ ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
     l2 = l2->next;
     iter++;
   }
-  ListNode *res(0);
+  ListNode* res(0);
   s = i1 + i2;
   if (s == 0) {
     pb(res, 0);
@@ -82,17 +82,17 @@ ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
 }
 
 int main() {
-  ListNode *l1 = nullptr;
+  ListNode* l1 = nullptr;
   push(&l1, 0);
   //   push(&l1, 4);
   //   push(&l1, 2);
 
-  ListNode *l2 = nullptr;
+  ListNode* l2 = nullptr;
   push(&l2, 0);
   //   push(&l2, 6);
   //   push(&l2, 5);
 
-  ListNode *sum;
+  ListNode* sum;
   sum = addTwoNumbers(l1, l2);
 
   return 0;

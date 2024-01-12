@@ -39,7 +39,7 @@ source from: leetcode 1631
 #include "algobase.h"
 using namespace std;
 
-int minimumEffortPath(vector<vector<int>> &heights) {
+int minimumEffortPath(vector<vector<int>>& heights) {
   vector<pair<int, int>> dir = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
   int n = heights.size(), m = heights[0].size();
   vector<vector<int>> dp(n, vector<int>(m, 0));
@@ -57,7 +57,7 @@ int minimumEffortPath(vector<vector<int>> &heights) {
     if (x == n - 1 && y == m - 1)
       return val;
 
-    for (auto &[i, j] : dir) {
+    for (auto& [i, j] : dir) {
       if (x + i < n && x + i >= 0 && y + j < m && y + j >= 0) {
         if (dp[x + i][y + j] == 0) {
           int v = abs(heights[x + i][y + j] - heights[x][y]);

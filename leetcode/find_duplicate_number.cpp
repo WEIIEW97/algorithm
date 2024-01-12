@@ -29,13 +29,13 @@ source from: leetcode 287
 using namespace std;
 
 // intuitive but memory costy
-int findDuplicateV1(vector<int> &nums) {
+int findDuplicateV1(vector<int>& nums) {
   unordered_map<int, int> seen;
-  for (auto &n : nums) {
+  for (auto& n : nums) {
     seen[n]++;
   }
 
-  for (auto &p : seen) {
+  for (auto& p : seen) {
     if (p.second > 1) {
       return p.first;
     }
@@ -45,9 +45,9 @@ int findDuplicateV1(vector<int> &nums) {
 }
 
 // use unordered_set
-int findDuplicateV2(vector<int> &nums) {
+int findDuplicateV2(vector<int>& nums) {
   unordered_set<int> seen;
-  for (auto &v : nums) {
+  for (auto& v : nums) {
     if (seen.find(v) != seen.end())
       return v;
     seen.insert(v);
@@ -56,7 +56,7 @@ int findDuplicateV2(vector<int> &nums) {
 }
 
 // fast-slow pointer
-int findDuplicateV3(vector<int> &nums) {
+int findDuplicateV3(vector<int>& nums) {
   int fast = 0;
   int slow = 0;
   while (true) {

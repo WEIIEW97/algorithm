@@ -39,19 +39,19 @@ source from: leetcode 1697
 #include "algobase.h"
 using namespace std;
 
-vector<bool> distanceLimitedPathsExist(int n, vector<vector<int>> &edgeList,
-                                       vector<vector<int>> &queries) {
+vector<bool> distanceLimitedPathsExist(int n, vector<vector<int>>& edgeList,
+                                       vector<vector<int>>& queries) {
   vector<bool> ans;
   return ans;
 }
 
 int main() {
-    vector<bool> ans;
-    int n1, n2;
-    vector<vector<int>> e1, e2;
-    vector<vector<int>> q1, q2;
+  vector<bool> ans;
+  int n1, n2;
+  vector<vector<int>> e1, e2;
+  vector<vector<int>> q1, q2;
 
-    ans = distanceLimitedPathsExist(n1, e1, q1);
-    PRINT_VECTOR_1D(ans);
-    return 0;
+  ans = distanceLimitedPathsExist(n1, e1, q1);
+  PRINT_VECTOR_1D(ans);
+  return 0;
 }

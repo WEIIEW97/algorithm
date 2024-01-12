@@ -35,7 +35,7 @@ using namespace std;
 int lengthOfLastWordV1(string s) {
   int cnt = 0, ans = 0;
   bool is_char;
-  for (auto &v : s) {
+  for (auto& v : s) {
     is_char = (v >= 'a' && v <= 'z') || (v >= 'A' && v <= 'Z') ? true : false;
 
     if (is_char) {

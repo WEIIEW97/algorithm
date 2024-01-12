@@ -22,9 +22,10 @@ using namespace std;
 
 /*
  * Description
-Given an integer array nums of length n where all the integers of nums are in the range [1, n]
- and each integer appears once or twice, return an array of all the integers that appears twice.
-You must write an algorithm that runs in O(n) time and uses only constant extra space.
+Given an integer array nums of length n where all the integers of nums are in
+the range [1, n] and each integer appears once or twice, return an array of all
+the integers that appears twice. You must write an algorithm that runs in O(n)
+time and uses only constant extra space.
 
 Example 1:
 
@@ -52,44 +53,44 @@ leetcode 442. Find All Duplicates in an Array
 
 // solution 1, using unordered_map
 vector<int> findDuplicates(vector<int>& nums) {
-    unordered_map<int, int> map;
-    vector<int> d;
-    for (auto& v: nums) {
-        map[v]++;
-    }
+  unordered_map<int, int> map;
+  vector<int> d;
+  for (auto& v : nums) {
+    map[v]++;
+  }
 
-    for (auto& m: map) {
-        if (m.second == 2) {
-            d.push_back(m.first);
-        }
+  for (auto& m : map) {
+    if (m.second == 2) {
+      d.push_back(m.first);
     }
-    return d;
+  }
+  return d;
 }
 
 // solution 2
 vector<int> findDuplicatesV1(vector<int>& nums) {
-    vector<int> d;
-    int max = *max_element(nums.begin(), nums.end());
-    vector<bool> seen(max + 1, false);
+  vector<int> d;
+  int max = *max_element(nums.begin(), nums.end());
+  vector<bool> seen(max + 1, false);
 
-    for (auto& v: nums) {
-        if (seen[v]) {
-            d.push_back(v);
-        } else {
-            seen[v] = true;
-        }
+  for (auto& v : nums) {
+    if (seen[v]) {
+      d.push_back(v);
+    } else {
+      seen[v] = true;
     }
-    return d;
+  }
+  return d;
 }
 
 // solution 3
 vector<int> findDuplicatesV2(vector<int>& nums) {
-    vector<int> d;
-    sort(nums.begin(), nums.end());
-    for (auto i = 0; i < nums.size(); i++) {
-        if (nums[i - 1] == nums[i]) {
-            d.push_back(nums[i]);
-        }
+  vector<int> d;
+  sort(nums.begin(), nums.end());
+  for (auto i = 0; i < nums.size(); i++) {
+    if (nums[i - 1] == nums[i]) {
+      d.push_back(nums[i]);
     }
-    return d;
+  }
+  return d;
 }

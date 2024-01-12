@@ -72,7 +72,7 @@ using namespace std;
 //   return x == 0 ? ops : -1;
 // }
 
-int minOperations(vector<int> &nums, int x) {
+int minOperations(vector<int>& nums, int x) {
   int i = 0, j = 0, n = nums.size(), len = INT_MIN, cur = 0;
   int tar = accumulate(nums.begin(), nums.end(), 0) - x;
   if (tar < 0)

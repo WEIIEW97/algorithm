@@ -45,7 +45,7 @@ char findTheDifferenceV1(string s, string t) {
 // use XOR
 char findTheDifferenceV2(string s, string t) {
   char d = 0;
-  for (const auto &c : s + t) {
+  for (const auto& c : s + t) {
     d ^= c;
   }
   return d;
@@ -58,4 +58,3 @@ int main() {
   cout << ans << endl;
   return 0;
 }
-

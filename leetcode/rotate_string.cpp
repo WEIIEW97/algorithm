@@ -21,8 +21,8 @@ using namespace std;
 /* Description:
  * Given two strings s and goal, return true if and only if s can become goal
 after some number of shifts on s.
-A shift on s consists of moving the leftmost character of s to the rightmost position.
-For example, if s = "abcde", then it will be "bcdea" after one shift.
+A shift on s consists of moving the leftmost character of s to the rightmost
+position. For example, if s = "abcde", then it will be "bcdea" after one shift.
 
 
 Example 1:
@@ -45,18 +45,19 @@ leetcode: 796 rotate string
 
 // solution 1
 bool rotateString(string s, string goal) {
-    int n = s.size();
-    if (n != goal.size()) return false;
-    for (auto i = 0; i < n; i++) {
-        s = s.substr(1, n - 1) + s.substr(0, 1);
-        if (s == goal) {
-            return true;
-        }
-    }
+  int n = s.size();
+  if (n != goal.size())
     return false;
+  for (auto i = 0; i < n; i++) {
+    s = s.substr(1, n - 1) + s.substr(0, 1);
+    if (s == goal) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // solution 2
 bool rotateStringV2(string s, string goal) {
-    return (s + s).find(goal) && (s.size() == goal.size());
+  return (s + s).find(goal) && (s.size() == goal.size());
 }

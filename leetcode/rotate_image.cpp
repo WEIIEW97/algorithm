@@ -24,7 +24,7 @@ source from: leetcode 48
 #include "algobase.h"
 using namespace std;
 
-void rotate(vector<vector<int>> &matrix) {
+void rotate(vector<vector<int>>& matrix) {
   int n = matrix.size();
   int m = matrix[0].size();
   for (int i = 0; i < n; i++) {

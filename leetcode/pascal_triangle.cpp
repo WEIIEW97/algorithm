@@ -20,26 +20,26 @@
 using namespace std;
 
 vector<vector<int>> generate(int numRows) {
-    vector<vector<int>> r(numRows);
+  vector<vector<int>> r(numRows);
 
-    for (int i = 0; i < numRows; i++) {
-        r[i].resize(i+1);
-        r[i][0] = r[i][i] = 1;
+  for (int i = 0; i < numRows; i++) {
+    r[i].resize(i + 1);
+    r[i][0] = r[i][i] = 1;
 
-        for (int j = 1; j < i; j++) {
-            r[i][j] = r[i - 1][j - 1] + r[i - 1][j];
-        }
+    for (int j = 1; j < i; j++) {
+      r[i][j] = r[i - 1][j - 1] + r[i - 1][j];
     }
-    return r;
+  }
+  return r;
 }
 
 int main() {
-    auto res = generate(30);
-    for (auto & re : res) {
-        for (int j : re) {
-            cout << j;
-        }
-        cout << endl;
+  auto res = generate(30);
+  for (auto& re : res) {
+    for (int j : re) {
+      cout << j;
     }
-    return 0;
+    cout << endl;
+  }
+  return 0;
 }

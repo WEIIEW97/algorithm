@@ -31,18 +31,16 @@ class Inhert : public Base {
 public:
   Inhert(int a, int b) : Base(a, b) {}
   ~Inhert() = default;
-  int multipy() {
-    return a_ * b_;
-  }
+  int multipy() { return a_ * b_; }
 };
 
 int main() {
-    auto calculator1 = Base(3, 5);
-    auto calculator2 = Inhert(4, 5);
-    auto add_number1 = calculator1.add();
-    auto add_number2 = calculator2.add();
-    auto time_number2 = calculator2.multipy();
+  auto calculator1 = Base(3, 5);
+  auto calculator2 = Inhert(4, 5);
+  auto add_number1 = calculator1.add();
+  auto add_number2 = calculator2.add();
+  auto time_number2 = calculator2.multipy();
 
-    cout << add_number1 << add_number2 << time_number2 << endl;
-    return 0;
+  cout << add_number1 << add_number2 << time_number2 << endl;
+  return 0;
 }

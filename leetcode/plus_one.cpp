@@ -41,7 +41,7 @@ using namespace std;
 // extremely slow and memory cost version
 class Solution1 {
 public:
-  vector<int> plusOne(vector<int> &digits) {
+  vector<int> plusOne(vector<int>& digits) {
     int n = digits.size();
     if (digits.back() < 9) {
       digits.back()++;
@@ -60,7 +60,7 @@ public:
     }
   }
 
-  void check9(vector<int>::reverse_iterator &iter) {
+  void check9(vector<int>::reverse_iterator& iter) {
     if (*iter >= 9) {
       *iter = 0;
     } else {
@@ -71,7 +71,7 @@ public:
 
 class Solution2 {
 public:
-  vector<int> plusOne(vector<int> &digits) {
+  vector<int> plusOne(vector<int>& digits) {
     for (int i = digits.size() - 1; i >= 0; i--) {
       if (digits[i] < 9) {
         digits[i]++;

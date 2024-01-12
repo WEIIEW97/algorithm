@@ -25,7 +25,6 @@ source from: leetcode 872
 #include "node.h"
 using namespace std;
 
-
 void traverse(TreeNode* node, vector<int>& leaf) {
   if (node->left != nullptr)
     traverse(node->left, leaf);

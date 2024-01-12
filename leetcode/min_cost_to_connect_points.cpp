@@ -33,7 +33,7 @@ using namespace std;
 
 class Solution {
 public:
-  int minCostConnectPoints(vector<vector<int>> &points) {
+  int minCostConnectPoints(vector<vector<int>>& points) {
     int n = points.size();
     vector<int> cost(n, INT_MAX); // cost from this point to minimum cost point
     vector<bool> visited(n, false);
@@ -61,7 +61,7 @@ public:
     return ans;
   }
 
-  int L1(vector<int> &p1, vector<int> &p2) {
+  int L1(vector<int>& p1, vector<int>& p2) {
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]);
   }
 };

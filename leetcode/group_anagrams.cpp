@@ -31,18 +31,18 @@ source: leetcode 49
 using namespace std;
 
 // it is theorectically correst but will consume lots of time
-vector<vector<string>> groupAnagrams(vector<string> &strs) {
+vector<vector<string>> groupAnagrams(vector<string>& strs) {
   vector<vector<string>> group;
   vector<string> strsc = strs;
   unordered_map<string, int> book;
-  for (auto &str : strsc) {
+  for (auto& str : strsc) {
     sort(str.begin(), str.end());
     book[str]++;
   }
 
-  for (auto &key : book) {
+  for (auto& key : book) {
     vector<string> t;
-    for (auto &str : strs) {
+    for (auto& str : strs) {
       string s = str;
       sort(s.begin(), s.end());
       if (s == key.first) {
@@ -56,23 +56,23 @@ vector<vector<string>> groupAnagrams(vector<string> &strs) {
 }
 
 // fasrer version. use sorted string as key
-vector<vector<string>> groupAnagramsV2(vector<string> &strs) {
+vector<vector<string>> groupAnagramsV2(vector<string>& strs) {
   unordered_map<string, vector<string>> mp;
-  for (auto &s : strs) {
+  for (auto& s : strs) {
     string t = s;
     sort(t.begin(), t.end());
     mp[t].emplace_back(s);
   }
   vector<vector<string>> anagrams;
-  for (auto &kv : mp) {
+  for (auto& kv : mp) {
     anagrams.emplace_back(kv.second);
   }
   return anagrams;
 }
 
 int main() {
-  vector<string> v = {"eat","tea","tan","ate","nat","bat"};
-//   vector<string> v = {"a"};
+  vector<string> v = {"eat", "tea", "tan", "ate", "nat", "bat"};
+  //   vector<string> v = {"a"};
   auto res = groupAnagramsV2(v);
 
   PRINT_VECTOR_2D(res);
