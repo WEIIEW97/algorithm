@@ -84,3 +84,26 @@ inline ull NPR(int n, int r) {
     return f(r) / f(r - n);
   return f(n) / f(n - r);
 }
+
+std::vector<std::vector<int>> parse_matrix(const std::string& input) {
+  std::vector<std::vector<int>> result;
+  std::vector<int> row;
+  std::string number;
+
+  for (char ch : input) {
+    if (isdigit(ch) || ch == '-') {
+      number.push_back(ch);
+    } else if (ch == ',' || ch == ']') {
+      if (!number.empty()) {
+        row.push_back(std::stoi(number));
+        number.clear();
+      }
+      if (ch == ']' && !row.empty()) {
+        result.push_back(row);
+        row.clear();
+      }
+    }
+  }
+
+  return result;
+}

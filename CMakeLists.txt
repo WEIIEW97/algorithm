@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/longest_consecutive.cpp)
+leetcode/sum_subarray_mins.cpp)
