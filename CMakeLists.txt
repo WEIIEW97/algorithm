@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/sum_subarray_mins.cpp)
+leetcode/find_bottom_left_value.cpp)
