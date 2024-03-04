@@ -13,4 +13,4 @@ fi
 
 git commit -m $1
 git push
-echo "pushing to remote repository done!"
+echo "pushing to remote repository done!" 
