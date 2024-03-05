@@ -1,5 +1,6 @@
 #include <vector>
 #include <queue>
+#include <iostream>
 
 #define null -1
 
@@ -11,6 +12,39 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+inline ListNode* build_list(const std::vector<int>& values) {
+  if (values.empty() || values[0] == -1)
+    return nullptr;
+
+  ListNode* root = new ListNode(values[0]);
+  ListNode* curr = root;
+
+  for (size_t i = 0; i < values.size(); ++i) {
+    if (values[i] != -1) {
+      curr->next = new ListNode(values[i]);
+      curr = curr->next;
+    }
+  }
+
+  return root;
+}
+
+inline void delete_list(ListNode* node) {
+  if (node == nullptr)
+    return;
+  delete_list(node->next);
+  delete node;
+}
+
+inline void print_list(ListNode* head) {
+  ListNode* current = head;
+  while (current != nullptr) {
+    std::cout << current->val << " ";
+    current = current->next;
+  }
+  std::cout << "\n";
+}
+
 struct TreeNode {
   int val;
   TreeNode* left;
@@ -21,7 +55,7 @@ struct TreeNode {
       : val(x), left(left), right(right) {}
 };
 
-TreeNode* build_tree(const std::vector<int>& values) {
+inline TreeNode* build_tree(const std::vector<int>& values) {
   if (values.empty() || values[0] == -1)
     return nullptr;
 
@@ -47,7 +81,7 @@ TreeNode* build_tree(const std::vector<int>& values) {
   return root;
 }
 
-void delete_tree(TreeNode* node) {
+inline void delete_tree(TreeNode* node) {
   if (node == nullptr)
     return;
   delete_tree(node->left);
