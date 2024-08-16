@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/largest_time_from_digits.cpp)
+leetcode/max_distance.cpp)
