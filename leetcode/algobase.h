@@ -17,6 +17,7 @@
 #include <unordered_set>
 #include <vector>
 #include <functional>
+#include <type_traits>
 
 #define PRINT_VECTOR_2D(x)                                                     \
   for (auto& v : x) {                                                          \
@@ -24,14 +25,12 @@
     for (auto& w : v) {                                                        \
       std::cout << w << ",";                                                   \
     }                                                                          \
-    std::cout << "]"                                                           \
-              << "\n";                                                         \
+    std::cout << "]" << "\n";                                                  \
   }
 
 #define PRINT_VECTOR_1D(x)                                                     \
   for (auto& v : x)                                                            \
-    std::cout << "[" << v << ",]"                                              \
-              << "\n";
+    std::cout << "[" << v << ",]" << "\n";
 
 #define PRINT_MAP(x)                                                           \
   for (auto& kv : x) {                                                         \
@@ -74,4 +73,55 @@ inline ull NPR(int n, int r) {
   if (r >= n)
     return f(r) / f(r - n);
   return f(n) / f(n - r);
+}
+
+inline std::vector<std::vector<int>> parse_matrix(const std::string& input) {
+  std::vector<std::vector<int>> result;
+  std::vector<int> row;
+  std::string number;
+
+  for (char ch : input) {
+    if (isdigit(ch) || ch == '-') {
+      number.push_back(ch);
+    } else if (ch == ',' || ch == ']') {
+      if (!number.empty()) {
+        row.push_back(std::stoi(number));
+        number.clear();
+      }
+      if (ch == ']' && !row.empty()) {
+        result.push_back(row);
+        row.clear();
+      }
+    }
+  }
+
+  return result;
+}
+
+template <typename Func, typename... Args>
+void print_res(Func func, Args&&... args) {
+  // Deduce the return type of the function
+  using ReturnType = typename std::invoke_result<Func, Args...>::type;
+
+  // Execute the function with forwarded arguments
+  ReturnType result = func(std::forward<Args>(args)...);
+
+  // Use if constexpr to handle different types at compile time
+  if constexpr (std::is_same<ReturnType, bool>::value) {
+    // Special handling for bool
+    std::cout << (result ? "true" : "false") << std::endl;
+  } else if constexpr (std::is_same<
+                           ReturnType,
+                           std::vector<typename ReturnType::value_type>>::
+                           value) {
+    // Special handling for std::vector
+    std::cout << "Vector elements: ";
+    for (const auto& elem : result) {
+      std::cout << elem << " ";
+    }
+    std::cout << std::endl;
+  } else {
+    // Generic handling for all other types
+    std::cout << "The result is: " << result << std::endl;
+  }
 }
