@@ -1,6 +1,8 @@
 #pragma once
 
 #include <algorithm>
+#include <bitset>
+#include <string>
 #include <climits>
 #include <cmath>
 #include <cstdint>
@@ -15,6 +17,7 @@
 #include <stack>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 #include <functional>
 #include <type_traits>
@@ -25,12 +28,14 @@
     for (auto& w : v) {                                                        \
       std::cout << w << ",";                                                   \
     }                                                                          \
-    std::cout << "]" << "\n";                                                  \
+    std::cout << "]"                                                           \
+              << "\n";                                                         \
   }
 
 #define PRINT_VECTOR_1D(x)                                                     \
   for (auto& v : x)                                                            \
-    std::cout << "[" << v << ",]" << "\n";
+    std::cout << "[" << v << ",]"                                              \
+              << "\n";
 
 #define PRINT_MAP(x)                                                           \
   for (auto& kv : x) {                                                         \
@@ -98,6 +103,22 @@ inline std::vector<std::vector<int>> parse_matrix(const std::string& input) {
   return result;
 }
 
+// Helper to determine if a type is a std::vector
+template <typename T>
+struct is_vector : std::false_type {};
+
+template <typename T, typename Alloc>
+struct is_vector<std::vector<T, Alloc>> : std::true_type {};
+
+// Helper to print elements of a container
+template <typename Container>
+void printContainer(const Container& container) {
+  for (const auto& elem : container) {
+    std::cout << elem << " ";
+  }
+  std::cout << std::endl;
+}
+
 template <typename Func, typename... Args>
 void print_res(Func func, Args&&... args) {
   // Deduce the return type of the function
@@ -108,20 +129,15 @@ void print_res(Func func, Args&&... args) {
 
   // Use if constexpr to handle different types at compile time
   if constexpr (std::is_same<ReturnType, bool>::value) {
-    // Special handling for bool
     std::cout << (result ? "true" : "false") << std::endl;
-  } else if constexpr (std::is_same<
-                           ReturnType,
-                           std::vector<typename ReturnType::value_type>>::
-                           value) {
-    // Special handling for std::vector
+  } else if constexpr (is_vector<ReturnType>::value) {
     std::cout << "Vector elements: ";
-    for (const auto& elem : result) {
-      std::cout << elem << " ";
-    }
-    std::cout << std::endl;
+    printContainer(result);
+  } else if constexpr (std::is_integral<ReturnType>::value ||
+                       std::is_floating_point<ReturnType>::value) {
+    std::cout << "The result is: " << result << std::endl;
   } else {
-    // Generic handling for all other types
+    // Generic print for types that support std::ostream operator<<
     std::cout << "The result is: " << result << std::endl;
   }
 }

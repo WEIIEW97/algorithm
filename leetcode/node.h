@@ -15,7 +15,7 @@ struct ListNode {
 inline ListNode* build_list(const std::vector<int>& values) {
   if (values.empty() || values[0] == -1)
     return nullptr;
-
+ 
   ListNode* root = new ListNode(values[0]);
   ListNode* curr = root;
 
