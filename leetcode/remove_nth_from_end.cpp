@@ -33,7 +33,22 @@ source from: leetcode 19.
 #include "node.h"
 using namespace std;
 ListNode* removeNthFromEnd(ListNode* head, int n) {
-  
+  int sz = 0;
+  ListNode *fast, *slow;
+  fast = head;
+  slow = head;
+  while (fast != nullptr) {
+    sz++;
+    fast = fast->next;
+  }
+  int rn = sz - n;
+  if (rn == 0)
+    return head->next;
+  for (int i = 1; i < rn; i++) {  // index should start with 1
+    slow = slow->next;
+  }
+  slow->next = slow->next->next;
+  return head;
 }
 
 int main() {

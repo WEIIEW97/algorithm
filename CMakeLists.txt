@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/remove_stones.cpp)
+leetcode/modified_graph_edges.cpp)

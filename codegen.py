@@ -19,7 +19,7 @@ using namespace std;
 #if defined(__linux__)
 #if defined(__GNUC__) || defined(__clang__)
 #pragma GCC optimize("Ofast")
-static auto _linux_optimize = []() {{
+static auto __optimize = []() {{
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
   return nullptr;
@@ -31,7 +31,7 @@ static auto _linux_optimize = []() {{
 #if defined(__APPLE__) && defined(__MACH__)
 #if defined(__clang__)
 #pragma clang optimize on
-static auto _macos_optimize = []() {{
+static auto __optimize = []() {{
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
   return nullptr;
@@ -44,7 +44,7 @@ static auto _macos_optimize = []() {{
 #if defined(_MSC_VER)
 #include <cstdlib>
 #pragma optimize("t", on)
-static auto _windows_optimize = []() {{
+static auto __optimize = []() {{
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
   return nullptr;

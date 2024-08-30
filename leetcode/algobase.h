@@ -124,20 +124,24 @@ void print_res(Func func, Args&&... args) {
   // Deduce the return type of the function
   using ReturnType = typename std::invoke_result<Func, Args...>::type;
 
-  // Execute the function with forwarded arguments
-  ReturnType result = func(std::forward<Args>(args)...);
-
-  // Use if constexpr to handle different types at compile time
-  if constexpr (std::is_same<ReturnType, bool>::value) {
-    std::cout << (result ? "true" : "false") << std::endl;
-  } else if constexpr (is_vector<ReturnType>::value) {
-    std::cout << "Vector elements: ";
-    printContainer(result);
-  } else if constexpr (std::is_integral<ReturnType>::value ||
-                       std::is_floating_point<ReturnType>::value) {
-    std::cout << "The result is: " << result << std::endl;
+  if constexpr (std::is_void<ReturnType>::value) {
+    func(std::forward<Args>(args)...);
   } else {
-    // Generic print for types that support std::ostream operator<<
-    std::cout << "The result is: " << result << std::endl;
+    // Execute the function with forwarded arguments
+    ReturnType result = func(std::forward<Args>(args)...);
+
+    // Use if constexpr to handle different types at compile time
+    if constexpr (std::is_same<ReturnType, bool>::value) {
+      std::cout << (result ? "true" : "false") << std::endl;
+    } else if constexpr (is_vector<ReturnType>::value) {
+      std::cout << "Vector elements: ";
+      printContainer(result);
+    } else if constexpr (std::is_integral<ReturnType>::value ||
+                         std::is_floating_point<ReturnType>::value) {
+      std::cout << "The result is: " << result << std::endl;
+    } else {
+      // Generic print for types that support std::ostream operator<<
+      std::cout << "The result is: " << result << std::endl;
+    }
   }
 }
