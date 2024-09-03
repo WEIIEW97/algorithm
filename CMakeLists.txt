@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/chalk_replacer.cpp)
+leetcode/get_lucky.cpp)
