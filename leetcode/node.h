@@ -15,18 +15,21 @@ struct ListNode {
 inline ListNode* build_list(const std::vector<int>& values) {
   if (values.empty() || values[0] == -1)
     return nullptr;
- 
-  ListNode* root = new ListNode(values[0]);
-  ListNode* curr = root;
 
-  for (size_t i = 0; i < values.size(); ++i) {
-    if (values[i] != -1) {
+  ListNode* root =
+      new ListNode(values[0]); // Create the root node from the first value.
+  ListNode* curr = root;       // Start with the current node at the root.
+
+  for (size_t i = 1; i < values.size();
+       ++i) { // Start from the second item since the first is already used.
+    if (values[i] != -1) { // Only add non `-1` values, assuming `-1` is a
+                           // sentinel not to create a node.
       curr->next = new ListNode(values[i]);
-      curr = curr->next;
+      curr = curr->next; // Move the current node pointer forward.
     }
   }
 
-  return root;
+  return root; // Return the head of the list.
 }
 
 inline void delete_list(ListNode* node) {
