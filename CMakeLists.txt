@@ -11,4 +11,4 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-leetcode/max_count.cpp)
+leetcode/max_two_events.cpp)
