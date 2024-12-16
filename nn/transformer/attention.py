@@ -71,7 +71,7 @@ class MultiHeadAttention(nn.Module):
 
         # Step 4: Apply scaled dot-product attention for each head
 
-        output, attn_weights = self.attn(Q, K, V)
+        output, attn_weights = self.attn(Q, K, V, mask)
 
         # Step 5: Concatenate the outputs of all heads
         output = output.transpose(1, 2)  # Shape: (batch_size, seq_len, num_heads, d_k)
