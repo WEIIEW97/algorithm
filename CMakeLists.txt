@@ -10,5 +10,10 @@ endif()
 
 set(CMAKE_CXX_STANDARD 20)
 
+include_directories(
+    ${PROJECT_NAME}
+    ${CMAKE_SOURCE_DIR}/include
+)
+
 add_executable(${PROJECT_NAME}
 leetcode/get_final_state.cpp)
