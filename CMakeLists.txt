@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/facebook/is_toeplitz_matrix.cpp)
+leetcode/final_prices.cpp)
