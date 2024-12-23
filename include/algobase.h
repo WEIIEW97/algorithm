@@ -28,14 +28,12 @@
     for (auto& w : v) {                                                        \
       std::cout << w << ",";                                                   \
     }                                                                          \
-    std::cout << "]"                                                           \
-              << "\n";                                                         \
+    std::cout << "]" << "\n";                                                  \
   }
 
 #define PRINT_VECTOR_1D(x)                                                     \
   for (auto& v : x)                                                            \
-    std::cout << "[" << v << ",]"                                              \
-              << "\n";
+    std::cout << "[" << v << ",]" << "\n";
 
 #define PRINT_MAP(x)                                                           \
   for (auto& kv : x) {                                                         \
@@ -82,15 +80,23 @@ inline ull NPR(int n, int r) {
 
 inline std::vector<int> parse_vector(const std::string& input) {
   std::vector<int> result;
-  std::string number;
+  std::string number, token;
 
   for (auto& ch : input) {
-    if (isdigit(ch) || ch == '-') {
+    if (ch == '[' || std::isspace(static_cast<unsigned char>(ch)))
+      continue;
+    else if (ch == 'n' || ch == 'u' || ch == 'l')
+      token.push_back(ch);
+    else if (isdigit(ch) || ch == '-') {
       number.push_back(ch);
     } else if (ch == ',' || ch == ']') {
       if (!number.empty()) {
         result.push_back(std::stoi(number));
         number.clear();
+      }
+      if (token == "null") {
+        result.push_back(-1);
+        token.clear();
       }
     }
   }

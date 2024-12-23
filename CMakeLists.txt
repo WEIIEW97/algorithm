@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/final_prices.cpp)
+leetcode/minimum_operations.cpp)
