@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/minimum_operations.cpp)
+leetcode/largest_values.cpp)
