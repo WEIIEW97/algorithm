@@ -84,6 +84,26 @@ inline TreeNode* build_tree(const std::vector<int>& values) {
   return root;
 }
 
+inline void print_tree(TreeNode* root, int level = 0) {
+  if (root == nullptr) {
+    return;
+  }
+
+  // Indent according to the level
+  for (int i = 0; i < level; i++) {
+    std::cout << "  ";
+  }
+
+  // Print current node
+  std::cout << root->val << std::endl;
+
+  // Print left subtree
+  print_tree(root->left, level + 1);
+
+  // Print right subtree
+  print_tree(root->right, level + 1);
+}
+
 inline void delete_tree(TreeNode* node) {
   if (node == nullptr)
     return;
