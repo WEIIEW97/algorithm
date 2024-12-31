@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/count_good_strings.cpp)
+leetcode/min_cost_tickets.cpp)
