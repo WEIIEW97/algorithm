@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/ways_to_split_array.cpp)
+leetcode/min_operations.cpp)
