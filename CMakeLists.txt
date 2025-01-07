@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/min_operations.cpp)
+leetcode/string_matching.cpp)
