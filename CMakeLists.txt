@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/find_min_arrows_shot.cpp)
+leetcode/max_profit.cpp)

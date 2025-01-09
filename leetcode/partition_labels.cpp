@@ -72,7 +72,22 @@ static auto __optimize = []() {
 #endif
 
 vector<int> partitionLabels(string s) {
-  
+  vector<int> ans, freq(26, 0);
+  int n = s.size();
+
+  for (int i = 0; i < n; ++i) {
+    freq[s[i] - 'a'] = i; // record the last index of character
+  }
+  int maxi = 0, prev = -1;
+  for (int i = 0; i < n; ++i) {
+    maxi = max(maxi, freq[s[i] - 'a']);
+    if (maxi == i) {
+      ans.push_back(maxi - prev);
+      prev = maxi;
+      maxi = freq[s[i] - 'a'];
+    }
+  }
+  return prev == -1 ? vector<int>(n) : ans;
 }
 
 int main() {
