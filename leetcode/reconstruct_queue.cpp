@@ -81,7 +81,18 @@ static auto __optimize = []() {
 #endif
 
 vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
-  
+  sort(people.begin(), people.end(),
+       [](const vector<int>& a, const vector<int>& b) {
+         if (a[0] != b[0])
+           return a[0] > b[0];
+         return a[1] < b[1];
+       });
+  vector<vector<int>> queue;
+  for (auto& person : people) {
+    // insert the person at the index equal to their k value
+    queue.insert(queue.begin() + person[1], person);
+  }
+  return queue;
 }
 
 int main() {
@@ -89,8 +100,9 @@ int main() {
   people1 = parse_matrix("[[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]");
   people2 = parse_matrix("[[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]");
 
-  print_res(reconstructQueue, people1);
-  print_res(reconstructQueue, people2);
+  PRINT_VECTOR_2D(reconstructQueue(people1));
+  cout << "-----------------------" << "\n";
+  PRINT_VECTOR_2D(reconstructQueue(people2));
 
   return 0;
 }
