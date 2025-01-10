@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/reconstruct_queue.cpp)
+leetcode/greedy/check_possibility.cpp)

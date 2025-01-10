@@ -70,13 +70,24 @@ static auto __optimize = []() {
 #endif
 
 bool checkPossibility(vector<int>& nums) {
-  
+  int n = nums.size();
+  int prev = nums[0], modify = 0;
+  for (int i = 0; i < n; ++i) {
+    if (nums[i] < prev) {
+      if (++modify > 1) // if modification>1, return false
+        return false;
+      if (i - 2 >= 0 && nums[i - 2] > nums[i])
+        continue;
+    }
+    prev = nums[i];
+  }
+  return true;
 }
 
 int main() {
   vector<int> nums1, nums2;
-  nums1 = parse_vector("[4,2,3]");
-  nums2 = parse_vector("[4,2,1]");
+  nums1 = parse_vector("[-1,4,2,3]");
+  nums2 = parse_vector("[5,7,1,8]");
 
   print_res(checkPossibility, nums1);
   print_res(checkPossibility, nums2);
