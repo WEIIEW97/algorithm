@@ -53,6 +53,9 @@ static auto __optimize = []() {{
 #endif
 
 int main() {{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
     // Your code here
     return 0;
 }}

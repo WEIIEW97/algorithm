@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/greedy/check_possibility.cpp)
+leetcode/greedy/erase_overlap_intervals.cpp)
