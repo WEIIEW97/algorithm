@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/find_the_prefix_common_array.cpp)
+leetcode/two_pointers/merge.cpp)
