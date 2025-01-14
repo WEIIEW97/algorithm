@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/greedy/erase_overlap_intervals.cpp)
+leetcode/find_the_prefix_common_array.cpp)
