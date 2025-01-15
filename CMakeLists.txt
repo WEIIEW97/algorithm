@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/two_pointers/merge.cpp)
+leetcode/minimize_xor.cpp)
