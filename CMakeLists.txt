@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/minimize_xor.cpp)
+leetcode/two_pointers/judge_square_sum.cpp)
