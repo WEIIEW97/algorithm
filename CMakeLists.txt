@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/two_pointers/judge_square_sum.cpp)
+leetcode/two_pointers/length_of_longest_substring_k_distinct.cpp)
