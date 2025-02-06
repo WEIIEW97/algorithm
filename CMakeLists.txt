@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/bfs/update_matrix.cpp)
+leetcode/binary_search/single_non_duplicate.cpp)
