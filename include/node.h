@@ -12,6 +12,14 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+struct DoubleListNode {
+  int val;
+  DoubleListNode* last;
+  DoubleListNode* next;
+  DoubleListNode() : val(0), last(nullptr), next(nullptr) {}
+  DoubleListNode(int x) : val(x), last(nullptr), next(nullptr) {}
+};
+
 inline ListNode* build_list(const std::vector<int>& values) {
   if (values.empty() || values[0] == -1)
     return nullptr;
