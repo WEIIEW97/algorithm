@@ -69,8 +69,50 @@ static auto __optimize = []() {
 }();
 #endif
 #endif
+
+// using binary search
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-  
+  if (nums1.size() > nums2.size())
+    return findMedianSortedArrays(nums2, nums1);
+  int m = nums1.size(), n = nums2.size();
+  int l = 0, r = m;
+  while (l <= r) {
+    int mx = l + (r - l) / 2;
+    int my = (m + n + 1) / 2 - mx;
+    int max_left_x = (mx == 0) ? INT_MIN : nums1[mx - 1];
+    int min_right_x = (mx == m) ? INT_MAX : nums1[mx];
+
+    int max_left_y = (my == 0) ? INT_MIN : nums2[my - 1];
+    int min_right_y = (my == n) ? INT_MAX : nums2[my];
+
+    if (max_left_x <= min_right_y && max_left_y <= min_right_x) {
+      if ((m + n) % 2 == 0)
+        return (max(max_left_x, max_left_y) + min(min_right_x, min_right_y)) /
+               2.0;
+      else
+        return double(max(max_left_x, max_left_y));
+    } else if (max_left_x > min_right_y) {
+      r = mx - 1;
+    } else {
+      l = mx + 1;
+    }
+  }
+  return -1;
+}
+
+// staright-forward
+double findMedianSortedArraysV1(vector<int>& nums1, vector<int>& nums2) {
+  vector<int> merged;
+  merged.reserve(nums1.size() + nums2.size());
+  merge(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(),
+        back_inserter(merged));
+
+  int n = merged.size();
+  if (n % 2 == 1) {
+    return static_cast<double>(merged[n / 2]);
+  } else {
+    return (static_cast<double>(merged[n / 2 - 1]) + merged[n / 2]) / 2.0;
+  }
 }
 
 int main() {
