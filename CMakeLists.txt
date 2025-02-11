@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/binary_search/single_non_duplicate.cpp)
+leetcode/remove_occurences.cpp)
