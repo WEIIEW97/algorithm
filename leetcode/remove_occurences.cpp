@@ -87,6 +87,32 @@ string removeOccurrences(string s, string part) {
   return s;
 }
 
+int sumdigits(int v) {
+  int s = 0;
+  while (v != 0) {
+    s += v % 10;
+    v /= 10;
+  }
+  return s;
+}
+
+int maximumSum(vector<int>& nums) {
+  unordered_map<int, vector<int>> freq(nums.size());
+  for (int num : nums) {
+    freq[sumdigits(num)].push_back(num);
+  }
+
+  int ans = -1;
+  for (auto [k, v] : freq) {
+    if (v.size() > 1) {
+      sort(v.rbegin(), v.rend());
+      int tmp = v[0] + v[1]; 
+      ans = max(ans, tmp);
+    }
+  }
+  return ans;
+}
+
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);

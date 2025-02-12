@@ -16,4 +16,4 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
-leetcode/remove_occurences.cpp)
+leetcode/maximum_sum.cpp)
